@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 
 // Reducers
 
-const { selectSong } = require("../actions");
+const { selectedSong } = require("../actions");
 
 const songsReducer = () =>{
  return [
@@ -24,6 +24,6 @@ const selectedSongReducer = (selectedSong = null, action) => {
 }; 
 
 export default combineReducers({
-  song: songsReducer ,
+  songs: songsReducer ,
   selectedSong :selectedSongReducer
 });
