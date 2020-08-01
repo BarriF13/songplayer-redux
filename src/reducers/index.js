@@ -16,10 +16,11 @@ const songsReducer = () =>{
 };
 
 const selectedSongReducer = (selectedSong = null, action) => {
+  //if the song selected then return action.payload which is song  the song  
   if(action.type === 'SONG_SELECTED') {
     return action.payload;
   }
-
+// if not just gives back the current selected song 
   return selectedSong;
 }; 
 
