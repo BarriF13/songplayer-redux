@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 
 // Reducers
 
-const { selectedSong } = require("../actions");
+const { selectSong } = require("../actions");
 
 const songsReducer = () =>{
  return [

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { selectSong } from '../actions'
 export class SongList extends Component {
 
   //helper method- take the list -map- return jsx
@@ -8,9 +9,14 @@ export class SongList extends Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button onClick={console.log('click')} className="ui button primary">Select</button>
+            <button
+              className="ui button primary"
+              onClick={()=> this.props.selectSong(song)}
+            >
+              Select
+            </button>
           </div>
-      <div className="content">{song.title}</div>
+          <div className="content">{song.title}</div>
         </div>
       )
     });
@@ -19,6 +25,7 @@ export class SongList extends Component {
   render() {
     //**--this.props === {songs: state.songs}
     //console.log(this.props.songs);
+    console.log(this.props);
     return (
       <div className="ui divided list">
         {this.renderList()}
@@ -30,12 +37,14 @@ export class SongList extends Component {
 // means get the data from state and pass it like props to our component 
 //state = all the (DATA ) songs in redux store -- in insurance example would be all the policies claims and accounting 
 const mapStateToProps = (state) => {
-  //console.log(state);
+  console.log(state);
   // this data  songs: state.songs --below  will show up as** props inside of our component 
   return { songs: state.songs };
 }
 
 //connect is a react component 
 //now we config the connect function by first adding map.. function as the first arg - 
-export default connect(mapStateToProps)(SongList);
+export default connect(mapStateToProps, {
+  selectSong: selectSong
+})(SongList);
 //connect return a function and the second () is revoking the function within here is songList
